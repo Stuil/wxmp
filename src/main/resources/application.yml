@@ -1,0 +1,66 @@
+
+server:
+  servlet:
+    context-path: /
+  port: 9963
+
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false
+    enabled: true
+
+  ##邮箱服务器地址
+  ##QQ smtp.qq.com
+  ##sina smtp.sina.cn
+  ##aliyun smtp.aliyun.com
+  ##163 smtp.163.com
+  mail:
+    #协议
+    protocol: smtps
+    # 邮箱服务器地址
+    host: smtp.qq.com
+    # 要发送的邮箱
+    username: 1634829010@qq.com
+    # 授权码  注意：不是密码
+    password: kcupcvkulugxehad
+    # 编码格式
+    default-encoding: utf-8
+    # 发送者   可以与username一致
+    from: 1634829010@qq.com
+    #  端口  465或994  具体查阅官方文档
+    port: 465
+
+      # 热加载
+      #devtools:
+    #restart:
+    #热部署生效
+    #  enabled: true
+    #  #设置重启的目录，添加那个目录的文件需要restart
+    #   additional-paths: src/main/java
+    #    #排除那个目录的文件不需要restart
+    #  additional-exclude: static/**,public/**
+
+  #    #classpath目录下的WEB-INF文件夹内容修改不重启
+  #    exclude: com
+
+
+##############  mybatis-plus #############
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  global-config:
+    # 逻辑删除配置
+    db-config:
+      # 删除前
+      logic-not-delete-value: 1
+      # 删除后
+      logic-delete-value: 0
