@@ -15,38 +15,38 @@ spring:
     cache: false
     enabled: true
 
-  ##ÓÊÏä·şÎñÆ÷µØÖ·
+  ##é‚®ç®±æœåŠ¡å™¨åœ°å€
   ##QQ smtp.qq.com
   ##sina smtp.sina.cn
   ##aliyun smtp.aliyun.com
   ##163 smtp.163.com
   mail:
-    #Ğ­Òé
+    #åè®®
     protocol: smtps
-    # ÓÊÏä·şÎñÆ÷µØÖ·
+    # é‚®ç®±æœåŠ¡å™¨åœ°å€
     host: smtp.qq.com
-    # Òª·¢ËÍµÄÓÊÏä
+    # è¦å‘é€çš„é‚®ç®±
     username: 1634829010@qq.com
-    # ÊÚÈ¨Âë  ×¢Òâ£º²»ÊÇÃÜÂë
+    # æˆæƒç   æ³¨æ„ï¼šä¸æ˜¯å¯†ç 
     password: kcupcvkulugxehad
-    # ±àÂë¸ñÊ½
+    # ç¼–ç æ ¼å¼
     default-encoding: utf-8
-    # ·¢ËÍÕß   ¿ÉÒÔÓëusernameÒ»ÖÂ
+    # å‘é€è€…   å¯ä»¥ä¸usernameä¸€è‡´
     from: 1634829010@qq.com
-    #  ¶Ë¿Ú  465»ò994  ¾ßÌå²éÔÄ¹Ù·½ÎÄµµ
+    #  ç«¯å£  465æˆ–994  å…·ä½“æŸ¥é˜…å®˜æ–¹æ–‡æ¡£
     port: 465
 
-      # ÈÈ¼ÓÔØ
-      #devtools:
+      # çƒ­åŠ è½½
+    #devtools:
     #restart:
-    #ÈÈ²¿ÊğÉúĞ§
+    #çƒ­éƒ¨ç½²ç”Ÿæ•ˆ
     #  enabled: true
-    #  #ÉèÖÃÖØÆôµÄÄ¿Â¼£¬Ìí¼ÓÄÇ¸öÄ¿Â¼µÄÎÄ¼şĞèÒªrestart
+    #  #è®¾ç½®é‡å¯çš„ç›®å½•ï¼Œæ·»åŠ é‚£ä¸ªç›®å½•çš„æ–‡ä»¶éœ€è¦restart
     #   additional-paths: src/main/java
-    #    #ÅÅ³ıÄÇ¸öÄ¿Â¼µÄÎÄ¼ş²»ĞèÒªrestart
+    #    #æ’é™¤é‚£ä¸ªç›®å½•çš„æ–‡ä»¶ä¸éœ€è¦restart
     #  additional-exclude: static/**,public/**
 
-  #    #classpathÄ¿Â¼ÏÂµÄWEB-INFÎÄ¼ş¼ĞÄÚÈİĞŞ¸Ä²»ÖØÆô
+  #    #classpathç›®å½•ä¸‹çš„WEB-INFæ–‡ä»¶å¤¹å†…å®¹ä¿®æ”¹ä¸é‡å¯
   #    exclude: com
 
 
@@ -58,9 +58,9 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath*:mapper/**/*Mapper.xml
   global-config:
-    # Âß¼­É¾³ıÅäÖÃ
+    # é€»è¾‘åˆ é™¤é…ç½®
     db-config:
-      # É¾³ıÇ°
+      # åˆ é™¤å‰
       logic-not-delete-value: 1
-      # É¾³ıºó
+      # åˆ é™¤å
       logic-delete-value: 0
