@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
  * @title: AccessToken
  * @description: 保存微信返回的access_token值
  * @date: 2021/3/9
- * @author: zwh
+ * @author: stuil
  * @copyright: Copyright (c) 2021
  * @version: 1.0
  */

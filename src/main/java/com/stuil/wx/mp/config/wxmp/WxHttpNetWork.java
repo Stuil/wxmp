@@ -14,7 +14,7 @@ import java.security.cert.X509Certificate;
  * @title: WxHttpNetWork
  * @description: 向微信发送请求  用于发送http请求的工具类(向微信发送http请求，获取access_token)
  * @date: 2021/3/9
- * @author: zwh
+ * @author: stuil
  * @copyright: Copyright (c) 2021
  * @version: 1.0
  */

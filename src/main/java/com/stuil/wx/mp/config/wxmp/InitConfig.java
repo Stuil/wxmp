@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @description: 默认启动项目的时候就启动该类，用来向微信后台定期获取access_token值
  * 继承ApplicationRunner接口的话，项目启动时就会执行里边的run方法
  * @date: 2021/3/9
- * @author: zwh
+ * @author: stuil
  * @copyright: Copyright (c) 2021
  * @version: 1.0
  */
@@ -23,10 +23,10 @@ public class InitConfig implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("开始获取微信里的access_token");
-        /*final String appId = getInitParameter("appId");
-        final String appSecret = getInitParameter("appSecret");*/
-        final String appId = "wx940842767f562278";
-        final String appSecret = "018b2ffb9141c926aedebcd5a23c718f";
+        final String appId = "wx679e6f7d304eb564";
+        final String appSecret = "4068f92fe5006a1a59cfba6831e0d3e7";
+     //   final String appId = "wx794006a4e0786358";
+     //   final String appSecret = "1b0af029ef071311b41c57c11e44ae72";
         //获取accessToken
         AccessTokenInfo.accessToken = getAccessToken(appId, appSecret);
     }

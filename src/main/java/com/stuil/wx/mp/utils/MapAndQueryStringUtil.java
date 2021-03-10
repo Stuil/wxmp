@@ -9,7 +9,7 @@ import java.util.*;
  * @title: MapAndQueryStringUtil
  * @description: map和queryString字符串互转
  * @date: 2021/3/3
- * @author: zwh
+ * @author: stuil
  * @copyright: Copyright (c) 2021
  * @version: 1.0
  */

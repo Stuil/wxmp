@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @title: IndexController
  * @description:
  * @date: 2021/3/9
- * @author: zwh
+ * @author: stuil
  * @copyright: Copyright (c) 2021
  * @version: 1.0
  */

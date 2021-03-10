@@ -1,26 +1,46 @@
 package com.stuil.wx.mp.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.stuil.wx.mp.config.wxmp.AccessTokenInfo;
+import com.stuil.wx.mp.service.WxMpService;
+import com.stuil.wx.mp.utils.MapToXmlParamUtil;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.nutz.lang.Encoding;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.yaml.snakeyaml.reader.StreamReader;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @title: WxMpController
  * @description: 公众号
  * @date: 2021/3/9
- * @author: zwh
+ * @author: stuil
  * @copyright: Copyright (c) 2021
  * @version: 1.0
  */
 @Controller
 public class WxMpController {
+
+    @Autowired
+    WxMpService wxMpService;
+
     //切记：这里是自定义的token，需和你微信配置界面提交的token完全一致
     private final String TOKEN = "TOKEN001";
 
@@ -111,6 +131,53 @@ public class WxMpController {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
+        return "";
+    }
+
+    /**
+     * @description: 获取用户信息
+     * @date: 2021/3/10
+     * @author: stuil
+     */
+    @RequestMapping("/users")
+    @ResponseBody
+    public String users(){
+        String userList = wxMpService.getUserList(AccessTokenInfo.accessToken.getTokenName(), "");
+        Map<String,Object> mapObj = JSONObject.parseObject(userList,Map.class);
+        String data = JSON.toJSONString(mapObj.get("data"));
+        Map<String,Object> openidList = JSONObject.parseObject(data ,Map.class);
+        List<String> list = JSONObject.parseArray(((JSONArray) openidList.get("openid")).toJSONString(), String.class);
+        list.forEach(item->{
+            String unserInfo = wxMpService.getUnserInfo(AccessTokenInfo.accessToken.getTokenName(), (String)item);
+            Map<String,Object> mapObj1 = JSONObject.parseObject(unserInfo,Map.class);
+        });
+        return "success";
+    }
+
+    /**
+     * @description: 推送消息解析
+     * @date: 2021/3/10
+     * @author: stuil
+     */
+    @PostMapping("/mpInit")
+    public String getMessage(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        BufferedReader br = request.getReader();
+        String str, wholeStr = "";
+        while((str = br.readLine()) != null){
+            wholeStr += str;
+        }
+        Map<String, Object> map = MapToXmlParamUtil.multilayerXmlToMap(wholeStr);
+        System.out.println(wholeStr);
+        return "";
+    }
+
+    /**
+     * @param request
+     * @param msgXml
+     * @param remoteIp
+     * @return result
+     */
+    public String processMsg(HttpServletRequest request, String msgXml, String remoteIp) {
         return "";
     }
 }
